@@ -8,7 +8,9 @@ import com.t3tech.mqtt.Subscriber;
 
 public class main {
 
+	private static final int MQTT_TOPIC_X_QOS = 0;
 	private static final String MQTT_TOPIC_X = "teste/teste/";
+	private static final String MQTT_TOPIC_X_SEARCH = MQTT_TOPIC_X + "#";
 	private static final String MQTT_SERVER = "tcp://192.168.1.165:1883";
 	private static final String MQTT_SERVER_USER = "mosquitto_user";
     private static final String MQTT_SERVER_PASS = "mqtt099812";
@@ -19,7 +21,7 @@ public class main {
         ClienteMQTT clienteMQTT = new ClienteMQTT(MQTT_SERVER, MQTT_SERVER_USER, MQTT_SERVER_PASS);
         clienteMQTT.iniciar();
 
-        new Subscriber(clienteMQTT, MQTT_TOPIC_X + "#", 0);
+        new Subscriber(clienteMQTT, MQTT_TOPIC_X_SEARCH, MQTT_TOPIC_X_QOS);
 
       while (true) {
 	      Thread.sleep(1000);
