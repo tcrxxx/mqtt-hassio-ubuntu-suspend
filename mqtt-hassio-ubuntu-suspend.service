@@ -1,0 +1,20 @@
+[Unit]
+Description=MQTT HASSIO Ubuntu Suspend Service
+[Service]
+User=trodrigues
+# The configuration file application.properties should be here:
+
+#change this to your workspace
+WorkingDirectory=/home/trodrigues/dev/repo/mqtt-hassio-ubuntu-suspend/target
+
+#path to executable. 
+#executable is a bash script which calls jar file
+ExecStart=/home/trodrigues/dev/repo/mqtt-hassio-ubuntu-suspend
+
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
