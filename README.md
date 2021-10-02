@@ -30,7 +30,7 @@ WantedBy=multi-user.target
 
 bash:
 #!/bin/sh
-sudo /usr/bin/java -jar mqtt-hassio-ubuntu-suspend-jar-with-dependencies.jar
+/usr/bin/java -jar mqtt-hassio-ubuntu-suspend-jar-with-dependencies.jar
 
 
 sudo chmod u+x mqtt-hassio-ubuntu-suspend.bash
