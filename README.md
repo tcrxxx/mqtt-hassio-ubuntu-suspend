@@ -14,7 +14,7 @@ WorkingDirectory=/usr/local/bin/mqtt-hassio-ubuntu-suspend
 
 #path to executable. 
 #executable is a bash script which calls jar file
-ExecStart=/usr/local/bin/mqtt-hassio-ubuntu-suspend
+ExecStart=/usr/local/bin/mqtt-hassio-ubuntu-suspend/mqtt-hassio-ubuntu-suspend.bash
 
 SuccessExitStatus=143
 TimeoutStopSec=10
@@ -23,6 +23,7 @@ RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
+
 
 
 -------------------------------------------------------------------------------------
