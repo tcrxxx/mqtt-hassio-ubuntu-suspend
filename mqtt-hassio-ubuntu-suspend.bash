@@ -1,3 +1,2 @@
 #!/bin/sh
-sudo /usr/bin/java -jar target/mqtt-hassio-ubuntu-suspend-jar-with-dependencies.jar 
-
+/usr/bin/sudo java -jar mqtt-hassio-ubuntu-suspend-jar-with-dependencies.jar
