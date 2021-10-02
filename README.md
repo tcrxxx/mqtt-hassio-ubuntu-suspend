@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este serviço tem como o objetivo executar o comando de suspensão do Ubuntu, apartir do listener de um tópico MQTT.
+Este serviço tem como o objetivo executar o comando de suspensão do Ubuntu, a partir do listener de um tópico MQTT.
 Ele visa facilitar as automações e integrações principalmente com o homeassistant.
 
 ## Dependências 
