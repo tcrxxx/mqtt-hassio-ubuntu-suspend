@@ -1,18 +1,23 @@
 # mqtt-hassio-ubuntu-suspend
 
-Este serviço java tem como o objetivo de executar o comando de suspensão do Ubuntu, apartir do listener de um tópico MQTT.
-Visa, facilitar as automações e integrações com o homeassistant.
+## Descrição
 
-Importante:
-É necessário que haja um servidor MQTT configurado e funcionando.
-Para este projeto foi usado 
+Este serviço tem como o objetivo executar o comando de suspensão do Ubuntu, apartir do listener de um tópico MQTT.
+Ele visa facilitar as automações e integrações principalmente com o homeassistant.
 
--------------------------------------------------------------------------------------
-Criar arquivo /etc/systemd/system/mqtt-hassio-ubuntu-suspend.service:
+## Dependências 
+- Java 8
+- Maven
+- Servidor de MQTT
+
+## Instalação
+
+### 1) Criar o arquivo /etc/systemd/system/mqtt-hassio-ubuntu-suspend.service:
 
 Comando: sudo vim /etc/systemd/system/mqtt-hassio-ubuntu-suspend.service
 
 Conteúdo:
+```shell
 [Unit]
 Description=MQTT HASSIO Ubuntu Suspend Service
 
@@ -34,37 +39,68 @@ RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
+```
 
 
--------------------------------------------------------------------------------------
-
-Criar pasta: /usr/local/bin/mqtt-hassio-ubuntu-suspend
+### 2) Criar pasta: /usr/local/bin/mqtt-hassio-ubuntu-suspend
 
 Dentro desta pasta: 
-- inclua o arquivo: target/mqtt-hassio-ubuntu-suspend-jar-with-dependencies.jar (para gerar este jar, use maven install)
+- inclua o arquivo: target/mqtt-hassio-ubuntu-suspend-jar-with-dependencies.jar (para gerar este jar, use maven install no projeto)
 
 - inclua o arquivo mqtt-hassio-ubuntu-suspend.bash
-  conteúdo:
+
+Conteúdo:
+
+```shell
 #!/bin/sh
 /usr/bin/sudo java -jar mqtt-hassio-ubuntu-suspend-jar-with-dependencies.jar
+```
 
--------------------------------------------------------------------------------------
 
+- Não esqueça da permissão de execução para o arquivo bash:
+
+```shell
 sudo chmod u+x /usr/local/bin/mqtt-hassio-ubuntu-suspend/mqtt-hassio-ubuntu-suspend.bash
+```
 
--------------------------------------------------------------------------------------
 
-Para instalar o serviço:
+### 3) Para instalar o serviço
 
+- reload do daemon:
+```shell
 sudo systemctl daemon-reload
+```
+
+- enable do service:
+```shell
 sudo systemctl enable mqtt-hassio-ubuntu-suspend.service
+```
+
+- start do service
+```shell
 sudo systemctl start mqtt-hassio-ubuntu-suspend
+```
 
-Verifique o status do serviço:
+- Verifique o status do serviço:
 
+```shell
 sudo systemctl status mqtt-hassio-ubuntu-suspend
+```
 
-Acompanhe os logs do serviço:
+- Acompanhe os logs do serviço:
 
+```shell
 sudo journalctl -f -n 1000 -u mqtt-hassio-ubuntu-suspend.service 
+```
+
+## Autores
+
+* **DEV e amante por IOT** - *Desenvolvimento por* - [Thalles Rodrigues](https://github.com/tcrxxx)
+
+## Licença
+
+Este projeto está sob a licença: 
+- use a vontade para uso pessoal. 
+- Ah, ao usar, divulgue para seus amigos.
+
 
